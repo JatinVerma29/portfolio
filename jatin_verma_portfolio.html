@@ -508,6 +508,8 @@
     position: relative;
     overflow: hidden;
     transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
   }
   .project-card::after {
     content: '';
@@ -520,6 +522,14 @@
   .project-card:hover { transform: translateY(-8px); border-color: var(--accent); }
   .project-card:hover::after { opacity: 1; }
 
+  /* Featured card accent colours */
+  .project-card.featured-green:hover { border-color: var(--accent3); }
+  .project-card.featured-green::after { background: linear-gradient(135deg, rgba(79,209,165,0.07), transparent); }
+  .project-card.featured-yellow:hover { border-color: var(--accent2); }
+  .project-card.featured-yellow::after { background: linear-gradient(135deg, rgba(232,197,71,0.07), transparent); }
+  .project-card.featured-purple:hover { border-color: #e87de8; }
+  .project-card.featured-purple::after { background: linear-gradient(135deg, rgba(232,125,232,0.07), transparent); }
+
   .project-num {
     font-family: 'Syne', sans-serif;
     font-size: 3.5rem;
@@ -527,6 +537,39 @@
     color: rgba(255,255,255,0.04);
     line-height: 1;
     margin-bottom: 20px;
+  }
+
+  .project-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 30px;
+    margin-bottom: 14px;
+    width: fit-content;
+  }
+  .badge-ai {
+    color: #e87de8;
+    background: rgba(232,125,232,0.08);
+    border: 1px solid rgba(232,125,232,0.2);
+  }
+  .badge-iot {
+    color: var(--accent3);
+    background: rgba(79,209,165,0.08);
+    border: 1px solid rgba(79,209,165,0.2);
+  }
+  .badge-voice {
+    color: var(--accent2);
+    background: rgba(232,197,71,0.08);
+    border: 1px solid rgba(232,197,71,0.2);
+  }
+  .badge-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
   }
 
   .project-title {
@@ -542,6 +585,7 @@
     color: var(--muted);
     line-height: 1.8;
     margin-bottom: 24px;
+    flex: 1;
   }
   .project-stack {
     display: flex; flex-wrap: wrap; gap: 8px;
@@ -555,6 +599,44 @@
     border: 1px solid rgba(91,110,245,0.25);
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+  .stack-tag.green {
+    background: rgba(79,209,165,0.10);
+    color: var(--accent3);
+    border-color: rgba(79,209,165,0.25);
+  }
+  .stack-tag.yellow {
+    background: rgba(232,197,71,0.10);
+    color: var(--accent2);
+    border-color: rgba(232,197,71,0.25);
+  }
+  .stack-tag.purple {
+    background: rgba(232,125,232,0.10);
+    color: #e87de8;
+    border-color: rgba(232,125,232,0.25);
+  }
+
+  /* Project links */
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 7px 14px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    width: fit-content;
+    cursor: none;
+  }
+  .project-link:hover {
+    color: var(--accent2);
+    border-color: var(--accent2);
   }
 
   /* CERTIFICATIONS */
@@ -750,7 +832,7 @@
       <div class="stat-label">Internships</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number">3+</div>
+      <div class="stat-number">6+</div>
       <div class="stat-label">Projects Built</div>
     </div>
     <div class="stat-card">
@@ -777,6 +859,7 @@
         <span class="skill-tag">Python</span>
         <span class="skill-tag">Java</span>
         <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">C++ (Arduino)</span>
       </div>
     </div>
     <div class="skill-cat">
@@ -794,7 +877,20 @@
       <div class="skill-cat-name">Backend & Database</div>
       <div class="skill-tags">
         <span class="skill-tag">Django</span>
+        <span class="skill-tag">Flask</span>
+        <span class="skill-tag">Firebase</span>
         <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">SQLite</span>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-icon">📡</div>
+      <div class="skill-cat-name">IoT & Hardware</div>
+      <div class="skill-tags">
+        <span class="skill-tag">ESP32</span>
+        <span class="skill-tag">MQTT</span>
+        <span class="skill-tag">Arduino IDE</span>
+        <span class="skill-tag">Sensor Integration</span>
       </div>
     </div>
     <div class="skill-cat">
@@ -808,11 +904,13 @@
     </div>
     <div class="skill-cat">
       <div class="skill-cat-icon">🛠️</div>
-      <div class="skill-cat-name">Tools</div>
+      <div class="skill-cat-name">Tools & AI</div>
       <div class="skill-tags">
         <span class="skill-tag">Git</span>
         <span class="skill-tag">GitHub</span>
         <span class="skill-tag">VS Code</span>
+        <span class="skill-tag">Anthropic API</span>
+        <span class="skill-tag">Scikit-learn</span>
       </div>
     </div>
   </div>
@@ -860,8 +958,58 @@
   <h2 class="section-title">Things I've built.</h2>
 
   <div class="projects-grid">
-    <div class="project-card">
+
+    <!-- NEW: Firebase Blog -->
+    <div class="project-card featured-purple">
       <div class="project-num">01</div>
+      <div class="project-badge badge-ai"><span class="badge-dot"></span>AI-Powered</div>
+      <div class="project-title">Aero Blog — AI-Powered Blogging Platform</div>
+      <p class="project-desc">A full-featured community blogging platform with AI capabilities built on top of Firebase. Features AI-generated post summaries, sentiment analysis badges, smart tag generation, writing assistant, and personalised article recommendations — all powered by the Anthropic API. Includes real-time comments, direct messaging, bookmarks, analytics dashboard, and notification system.</p>
+      <div class="project-stack">
+        <span class="stack-tag purple">React.js</span>
+        <span class="stack-tag purple">Firebase</span>
+        <span class="stack-tag purple">Anthropic API</span>
+        <span class="stack-tag purple">React Router</span>
+      </div>
+      <a href="https://github.com/JatinVerma29/firebase-blog" target="_blank" class="project-link">⌥ View on GitHub →</a>
+    </div>
+
+    <!-- NEW: Ghost-141 -->
+    <div class="project-card featured-yellow">
+      <div class="project-num">02</div>
+      <div class="project-badge badge-voice"><span class="badge-dot"></span>Voice AI</div>
+      <div class="project-title">Ghost-141 — Autonomous AI Laptop Controller</div>
+      <p class="project-desc">An advanced AI-powered voice assistant that fully automates a laptop via wake-word activation. Say "Ghost-141" and control apps, browse the web, manage files, execute terminal commands, and run multi-step automation routines — all by voice. Built with a persistent memory system that learns user preferences over time. Powered by the Anthropic API for natural language command interpretation.</p>
+      <div class="project-stack">
+        <span class="stack-tag yellow">Python</span>
+        <span class="stack-tag yellow">Anthropic API</span>
+        <span class="stack-tag yellow">SpeechRecognition</span>
+        <span class="stack-tag yellow">PyAutoGUI</span>
+        <span class="stack-tag yellow">pyttsx3</span>
+      </div>
+      <a href="https://github.com/JatinVerma29/Ghost-141" target="_blank" class="project-link">⌥ View on GitHub →</a>
+    </div>
+
+    <!-- NEW: Solar IoT -->
+    <div class="project-card featured-green">
+      <div class="project-num">03</div>
+      <div class="project-badge badge-iot"><span class="badge-dot"></span>IoT · ML</div>
+      <div class="project-title">Solar IoT Smart Irrigation System</div>
+      <p class="project-desc">A fully autonomous, solar-powered smart irrigation system for precision agriculture. ESP32 reads soil moisture, temperature, humidity, rainfall, and battery voltage across 4 independent zones. A Scikit-learn Decision Tree classifies Indian weather seasons (Summer / Monsoon / Post-Monsoon) to make intelligent irrigation decisions. Real-time data flows via MQTT to a Flask server and live web dashboard with Telegram & email alerts.</p>
+      <div class="project-stack">
+        <span class="stack-tag green">ESP32 / Arduino</span>
+        <span class="stack-tag green">Python / Flask</span>
+        <span class="stack-tag green">MQTT</span>
+        <span class="stack-tag green">Scikit-learn</span>
+        <span class="stack-tag green">SQLite</span>
+        <span class="stack-tag green">Chart.js</span>
+      </div>
+      <a href="https://github.com/JatinVerma29/solar-iot-smart-irrigation" target="_blank" class="project-link">⌥ View on GitHub →</a>
+    </div>
+
+    <!-- ORIGINAL: Military Supply -->
+    <div class="project-card">
+      <div class="project-num">04</div>
       <div class="project-title">Military Supply Management Portal</div>
       <p class="project-desc">A web-based system for managing inventory and supplies for military logistics. Features full CRUD operations and role-based access control for secure data management.</p>
       <div class="project-stack">
@@ -871,8 +1019,9 @@
       </div>
     </div>
 
+    <!-- ORIGINAL: Portfolio -->
     <div class="project-card">
-      <div class="project-num">02</div>
+      <div class="project-num">05</div>
       <div class="project-title">Personal Portfolio Website</div>
       <p class="project-desc">Responsive website showcasing skills and projects with a clean UI and structured layout. Optimized for cross-device compatibility and professional presentation.</p>
       <div class="project-stack">
@@ -882,8 +1031,9 @@
       </div>
     </div>
 
+    <!-- ORIGINAL: Frontend Mini -->
     <div class="project-card">
-      <div class="project-num">03</div>
+      <div class="project-num">06</div>
       <div class="project-title">Frontend Mini Projects</div>
       <p class="project-desc">A collection of focused frontend projects including a calculator and landing pages, with emphasis on responsiveness and UI consistency.</p>
       <div class="project-stack">
@@ -892,6 +1042,7 @@
         <span class="stack-tag">JavaScript</span>
       </div>
     </div>
+
   </div>
 </section>
 

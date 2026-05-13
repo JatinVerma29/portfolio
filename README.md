@@ -2,6 +2,7 @@
 
 Personal portfolio website built with pure HTML, CSS & JavaScript. Showcases my projects, skills, internships, and certifications.
 
+🌐 **Live Site:** [portfolio-jatin-gold.vercel.app](https://portfolio-jatin-gold.vercel.app/)
 ## 🌟 Sections
 
 - **Hero** — Introduction with animated blobs and custom cursor
@@ -22,6 +23,7 @@ Personal portfolio website built with pure HTML, CSS & JavaScript. Showcases my 
 ## 🚀 Run Locally
 
 Just open `jatin_verma_portfolio.html` in any browser — no setup needed.
+
 
 ## 👤 Author
 
